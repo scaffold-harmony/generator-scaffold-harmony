@@ -5,7 +5,6 @@ const yosay = require("yosay");
 
 module.exports = class extends Generator {
   prompting() {
-    // Have Yeoman greet the user.
     this.log(
       yosay(
         `Welcome to the kickass ${chalk.red(
@@ -16,15 +15,23 @@ module.exports = class extends Generator {
 
     const prompts = [
       {
-        type: "confirm",
-        name: "someAnswer",
-        message: "Would you like to enable this option?",
-        default: true
-      }
+        type: 'input',
+        name: 'projectTitle',
+        message: 'Your project title',
+      },
+      {
+        type: 'input',
+        name: 'authorName',
+        message: 'Your name',
+      },
+      {
+        type: 'input',
+        name: 'authorEmail',
+        message: 'Your email',
+      },
     ];
 
     return this.prompt(prompts).then(props => {
-      // To access props later use this.props.someAnswer;
       this.props = props;
     });
   }

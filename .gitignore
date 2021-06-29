@@ -1,3 +1,4 @@
 node_modules
 coverage
 .idea
+generators/app/templates/frontend/src/contracts

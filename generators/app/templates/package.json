@@ -1,26 +1,45 @@
 {
-  "name": "drizzle-box",
+  "name": "<%= projectTitle %>",
   "version": "1.0.0",
   "description": "",
   "main": "truffle-config.js",
   "directories": {
     "test": "test"
   },
+  "config": {
+    "contracts_build_directory": "frontend/src/contracts"
+  },
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build": "gulp build",
+    "watch": "gulp watch",
+    "harmony:download": "curl -LO https://harmony.one/binary && chmod +x binary && mv binary harmony-node/harmony",
+    "harmony:devnet": "cd harmony-node && ./harmony --network devnet",
+    "postinstall": "npm run harmony:download"
   },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/truffle-box/drizzle-box.git"
+  "keywords": [
+    "harmony"
+  ],
+  "author": {
+    "name": "<%= authorName %>",
+    "email": "<%= authorEmail %>"
   },
-  "keywords": [],
-  "author": "",
-  "license": "ISC",
-  "bugs": {
-    "url": "https://github.com/truffle-box/drizzle-box/issues"
-  },
-  "homepage": "https://github.com/truffle-box/drizzle-box#readme",
   "dependencies": {
     "@openzeppelin/contracts": "^2.4.0"
+  },
+  "devDependencies": {
+    "@trufflesuite/web3-provider-engine": "^15.0.13-1",
+    "concurrently": "^6.2.0",
+    "del": "^6.0.0",
+    "dotenv": "^8.2.0",
+    "ethereumjs-wallet": "^1.0.1",
+    "ganache-cli": "^6.12.2",
+    "gulp": "^4.0.2",
+    "gulp-rev": "^9.0.0",
+    "gulp-sequence": "^1.0.0",
+    "gulp-shell": "^0.8.0",
+    "require-dir": "^1.2.0",
+    "solc": "^0.7.6",
+    "truffle": "^5.3.13"
   }
 }
