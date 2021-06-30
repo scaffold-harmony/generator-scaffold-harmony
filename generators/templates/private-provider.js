@@ -68,7 +68,7 @@ function PrivateKeyProvider(privateKey, providerUrl, chainId) {
     );
   }
 
-  this.wallet = EthereumjsWallet.default.fromPrivateKey(Buffer.from(privateKey, 'hex'));
+  this.wallet = EthereumjsWallet.default.fromPrivateKey(Buffer.from(privateKey.replace("0x", ""), 'hex'));
   this.address = `0x${this.wallet.getAddress().toString('hex')}`;
 
   this.engine = new ProviderEngine({ useSkipCache: false });
