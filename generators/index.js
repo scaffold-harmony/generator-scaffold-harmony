@@ -33,7 +33,7 @@ module.exports = class extends Generator {
         type: "list",
         name: "network",
         message: "Your preferred Harmony network",
-        choices: ["devnet", "testnet", "mainnet"],
+        choices: ["testnet", /*"devnet", "mainnet"*/],
         default: "testnet"
       },
       {
