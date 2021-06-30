@@ -54,7 +54,7 @@ module.exports = class extends Generator {
     this.fs.copy(this.templatePath("harmony-node"), this.destinationPath("harmony-node"), { globOptions: { dot: true } });
     this.fs.copy(this.templatePath("migrations"), this.destinationPath("migrations"));
     this.fs.copy(this.templatePath("test"), this.destinationPath("test"));
-    this.fs.copyTpl(this.templatePath(".env"), this.destinationPath(".env"), this.props);
+    this.fs.copyTpl(this.templatePath(".env.example"), this.destinationPath(".env"), this.props);
     this.fs.copy(this.templatePath(".gitattributes"), this.destinationPath(".gitattributes"));
     this.fs.copy(this.templatePath(".gitignore"), this.destinationPath(".gitignore"));
     this.fs.copy(this.templatePath("gulpfile.js"), this.destinationPath("gulpfile.js"));
