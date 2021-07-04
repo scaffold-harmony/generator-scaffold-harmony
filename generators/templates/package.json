@@ -11,8 +11,7 @@
   },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "build": "gulp build",
-    "watch": "gulp watch",
+    "start": "gulp",
     "harmony:download": "curl -LO https://harmony.one/binary && chmod +x binary && mv binary harmony-node/harmony",
     "harmony:devnet": "cd harmony-node && ./harmony --network devnet",
     "postinstall": "npm run harmony:download"

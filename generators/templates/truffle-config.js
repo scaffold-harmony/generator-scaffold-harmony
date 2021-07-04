@@ -17,7 +17,8 @@ module.exports = {
       provider: () => {
         return new PrivateKeyProvider(process.env.LOCALNET_PRIVATE_KEY, 'http://localhost:9500', networkId.Testnet)
       },
-      network_id: networkId.Testnet
+      network_id: networkId.Testnet,
+      timeoutBlocks: 300,
     },
 
     testnet: {
@@ -26,6 +27,7 @@ module.exports = {
       },
       network_id: networkId.Testnet,
       networkCheckTimeout: 30000,
+      timeoutBlocks: 300,
     },
 
     mainnet: {
@@ -34,6 +36,7 @@ module.exports = {
       },
       network_id: networkId.Mainnet,
       networkCheckTimeout: 30000,
+      timeoutBlocks: 300,
     }
   },
 

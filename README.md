@@ -1,5 +1,8 @@
-# generator-scaffold-harmony [![NPM version][npm-image]][npm-url] [![Build Status][travis-image]][travis-url] [![Dependency Status][daviddm-image]][daviddm-url] [![Coverage percentage][coveralls-image]][coveralls-url]
-> 
+# generator-scaffold-harmony 
+
+[![NPM version][npm-image]][npm-url]
+
+Yeoman generator of Harmony DApp Scaffold 
 
 ## Installation
 
