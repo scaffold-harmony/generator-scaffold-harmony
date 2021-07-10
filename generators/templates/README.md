@@ -30,7 +30,7 @@ You can change the following environment variables within `.env` file:
 2. deploy contracts to localnet & watch contract changes for re-deployment
    - `npm start`
 3. start react frontend
-   - `npm frontend:localnet`
+   - `npm run frontend:localnet`
 
 Please note if you started the localnet through GUI then you will have to manually fund your OneWallet by running `scripts/fund-onewallet.js` for transaction fees.
 
@@ -104,6 +104,18 @@ npm run frontend:testnet
 
 ```shell
 npm run frontend:mainnet
+```
+
+### Build Testnet Frontend
+
+```shell
+npm run frontend:build:testnet
+```
+
+### Build Mainnet Frontend
+
+```shell
+npm run frontend:build:mainnet
 ```
 
 ## Resources

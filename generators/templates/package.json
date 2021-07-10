@@ -25,8 +25,12 @@
     "deploy:mainnet": "truffle migrate --network=mainnet",
     "reset:mainnet": "truffle migrate --reset --network=mainnet",
     "frontend:localnet": "(cd frontend && npm run start)",
+    "frontend:build:localnet": "(cd frontend && npm run build)",
     "frontend:testnet": "(cd frontend && npm run start:testnet)",
+    "frontend:build:testnet": "(cd frontend && npm run build:testnet)",
     "frontend:mainnet": "(cd frontend && npm run start:mainnet)",
+    "frontend:build:mainnet": "(cd frontend && npm run build:mainnet)",
+    "frontend:test": "(cd frontend && npm run test)",
     "postinstall": "(cd frontend && npm install) && npm run localnet:build"
   },
   "keywords": [
