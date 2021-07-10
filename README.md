@@ -48,7 +48,7 @@ yo scaffold-harmony
   - [x] Installation guide (any dependencies etc.)
   - [x] Basic usage on how to run and interact with template.
   - [x] Document CLI.
-  - [ ] Provide extra resources and "kickstart" documentation links for developers.
+  - [x] Provide extra resources and "kickstart" documentation links for developers.
   - [x] Document how to deploy React application (simplified). https://create-react-app.dev/docs/deployment/
 - Nice-to-have
   - [x] Would be nice to use tool like cookiecutter to make template customizable with Author, App Name, Software Versions, Tags, Logos and other things that might be non-static.

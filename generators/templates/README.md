@@ -1,5 +1,12 @@
 # Scaffold Harmony
 
+## Prerequisites
+
+- POSIX compatible system (Linux/OSX/WSL)
+- Docker Community Version >= 20
+- Node.js >= 15
+- npm >= 7
+
 ## Account Setup
 
 - Localnet deployer
@@ -14,6 +21,18 @@ You can change the following environment variables within `.env` file:
 - `TESTNET_PRIVATE_KEY`: testnet deployer private key
 - `MAINNET_PRIVATE_KEY`: mainnet deployer private key
 - `ONEWALLET_ADDRESS`: address of your Harmony One Wallet Chrome extension
+
+## Development Workflow (localnet)
+
+1. start harmony localnet container by either of the following options:
+   - CLI: `npm run localnet:start`
+   - GUI: https://github.com/harmony-one/harmony-one-ganache-support/releases
+2. deploy contracts to localnet & watch contract changes for re-deployment
+   - `npm start`
+3. start react frontend
+   - `npm frontend:localnet`
+
+Please note if you started the localnet through GUI then you will have to manually fund your OneWallet by running `scripts/fund-onewallet.js` for transaction fees.
 
 ## Localnet Commands
 
@@ -86,3 +105,9 @@ npm run frontend:testnet
 ```shell
 npm run frontend:mainnet
 ```
+
+## Resources
+
+- HarmonyONE Developer Portal: https://docs.harmony.one/home/
+- Localnet Ganache GUI: https://github.com/harmony-one/harmony-one-ganache-support
+- Frontend Deployment Guide: https://create-react-app.dev/docs/deployment/
