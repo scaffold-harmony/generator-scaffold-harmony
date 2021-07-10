@@ -28,6 +28,16 @@ mkdir my-harmony-dapp && cd my-harmony-dapp
 yo scaffold-harmony
 ```
 
+## Demo Videos
+
+### Intro
+
+https://youtu.be/RThMOFCN-0M
+
+### Auto-reload
+
+https://youtu.be/2iEv3VrNLjA
+
 ## Checklist
 
 - [x] UI/UX React boilerplate code for DApp
