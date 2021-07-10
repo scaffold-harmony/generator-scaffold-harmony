@@ -30,16 +30,21 @@ module.exports = class extends Generator {
         message: "Your email"
       },
       {
-        type: "list",
-        name: "network",
-        message: "Your preferred Harmony network",
-        choices: ["testnet", /*"devnet", "mainnet"*/],
-        default: "testnet"
+        type: "input",
+        name: "onewalletAddress",
+        message: "Your ONE Wallet Chrome extension address"
       },
       {
         type: "input",
-        name: "privateKey",
-        message: "Your hexadecimal private key for smart contract deployment"
+        name: "testnetPrivateKey",
+        message: "Your hexadecimal private key for testnet deployment",
+        default: ""
+      },
+      {
+        type: "input",
+        name: "mainnetPrivateKey",
+        message: "Your hexadecimal private key for mainnet deployment",
+        default: ""
       }
     ];
 
@@ -51,7 +56,7 @@ module.exports = class extends Generator {
   writing() {
     this.fs.copy(this.templatePath("contracts"), this.destinationPath("contracts"));
     this.fs.copy(this.templatePath("frontend"), this.destinationPath("frontend"));
-    this.fs.copy(this.templatePath("harmony-node"), this.destinationPath("harmony-node"), { globOptions: { dot: true } });
+    this.fs.copyTpl(this.templatePath("frontend/package.json"), this.destinationPath("frontend/package.json"), this.props);
     this.fs.copy(this.templatePath("migrations"), this.destinationPath("migrations"));
     this.fs.copy(this.templatePath("test"), this.destinationPath("test"));
     this.fs.copyTpl(this.templatePath(".env.tpl"), this.destinationPath(".env"), this.props);
@@ -61,6 +66,8 @@ module.exports = class extends Generator {
     this.fs.copyTpl(this.templatePath("package.json"), this.destinationPath("package.json"), this.props);
     this.fs.copy(this.templatePath("private-provider.js"), this.destinationPath("private-provider.js"));
     this.fs.copy(this.templatePath("truffle-config.js"), this.destinationPath("truffle-config.js"));
+    this.fs.copy(this.templatePath("scripts"), this.destinationPath("scripts"));
+    this.fs.copy(this.templatePath("README.md"), this.destinationPath("README.md"));
   }
 
   install() {

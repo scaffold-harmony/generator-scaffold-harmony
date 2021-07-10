@@ -12,9 +12,22 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "gulp",
-    "harmony:download": "curl -LO https://harmony.one/binary && chmod +x binary && mv binary harmony-node/harmony",
-    "harmony:devnet": "cd harmony-node && ./harmony --network devnet",
-    "postinstall": "npm run harmony:download"
+    "localnet:build": "docker build -t harmonyone/localnet-ganache https://github.com/harmony-one/harmony-one-ganache-support.git\\#main:docker",
+    "localnet:start": "docker run --name harmony-localnet-ganache --rm -d -p 9500:9500 -p 9800:9800 -p 9801:9801 -p 9501:9501 harmonyone/localnet-ganache && ./scripts/wait-for-localnet.sh && ./scripts/fund-onewallet.js",
+    "localnet:stop": "docker rm -f harmony-localnet-ganache",
+    "localnet:status": "docker ps --filter name=harmony-localnet-ganache",
+    "localnet:logs": "docker logs -f harmony-localnet-ganache",
+    "localnet:hmy": "docker exec -it harmony-localnet-ganache hmy",
+    "deploy:localnet": "truffle migrate --network=localnet",
+    "reset:localnet": "truffle migrate --reset --network=localnet",
+    "deploy:testnet": "truffle migrate --network=testnet",
+    "reset:testnet": "truffle migrate --reset --network=testnet",
+    "deploy:mainnet": "truffle migrate --network=mainnet",
+    "reset:mainnet": "truffle migrate --reset --network=mainnet",
+    "frontend:localnet": "(cd frontend && npm run start)",
+    "frontend:testnet": "(cd frontend && npm run start:testnet)",
+    "frontend:mainnet": "(cd frontend && npm run start:mainnet)",
+    "postinstall": "(cd frontend && npm install) && npm run localnet:build"
   },
   "keywords": [
     "harmony"
@@ -39,6 +52,6 @@
     "gulp-shell": "^0.8.0",
     "require-dir": "^1.2.0",
     "solc": "^0.7.6",
-    "truffle": "^5.3.13"
+    "truffle": "^5.4.0"
   }
 }

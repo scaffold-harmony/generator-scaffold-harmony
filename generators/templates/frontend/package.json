@@ -1,5 +1,5 @@
 {
-  "name": "<?= projectTitle ?>-client",
+  "name": "<%= projectTitle %>-client",
   "version": "1.0.0",
   "private": true,
   "dependencies": {
@@ -10,9 +10,12 @@
   },
   "scripts": {
     "start": "react-scripts start",
+    "start:testnet": "REACT_APP_HARMONY_NETWORK=testnet react-scripts start",
+    "start:mainnet": "REACT_APP_HARMONY_NETWORK=mainnet react-scripts start",
     "build": "react-scripts build",
-    "test": "react-scripts test",
-    "eject": "react-scripts eject"
+    "build:testnet": "REACT_APP_HARMONY_NETWORK=testnet react-scripts build",
+    "build:mainnet": "REACT_APP_HARMONY_NETWORK=mainnet react-scripts build",
+    "test": "react-scripts test"
   },
   "browserslist": {
     "production": [

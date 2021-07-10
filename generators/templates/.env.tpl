@@ -1,4 +1,4 @@
-NETWORK=<%= network %>
-LOCALNET_PRIVATE_KEY='<%= privateKey %>'
-TESTNET_PRIVATE_KEY='<%= privateKey %>'
-MAINNET_PRIVATE_KEY='<%= privateKey %>'
+LOCALNET_PRIVATE_KEY='0x59f46b7addacb231e75932d384c5c75d5e9a84920609b5d27a57922244efbf90'
+TESTNET_PRIVATE_KEY='<%= testnetPrivateKey %>'
+MAINNET_PRIVATE_KEY='<%= mainnetPrivateKey %>'
+ONEWALLET_ADDRESS='<%= onewalletAddress %>'

@@ -1,9 +1,8 @@
 require('dotenv').config()
 const config = require('./package.json').config;
-const {series, parallel} = require('gulp');
+const {series} = require('gulp');
 const shell = require('gulp-shell');
 const del = require('del');
-const path = require('path');
 
 exports.clean = function clean (cb) {
   return del([
@@ -11,30 +10,16 @@ exports.clean = function clean (cb) {
   ], cb);
 }
 
-const compile = shell.task('truffle compile');
-exports.compile = compile;
-
-const migrate = shell.task(`truffle migrate --reset --network ${process.env.NETWORK}`)
+const migrate = shell.task(`truffle migrate --reset --network localnet`)
 exports.migrate = migrate;
 
-const devnet = shell.task(`npm run harmony:devnet`);
-exports.devnet = devnet;
-
-const deploy = series(
-  exports.migrate,
-);
-exports.deploy = deploy;
-
 function watch () {
-  require('gulp').watch(['contracts/**/*'], deploy);
+  require('gulp').watch(['contracts/**/*'], migrate);
 }
 exports.watch = watch;
 
-const frontend = shell.task('npm install && npm start', {cwd: path.join(__dirname, 'frontend')})
-exports.frontend = frontend;
-
 exports.default = series(
-  deploy,
+  migrate,
   watch,
 );
 
