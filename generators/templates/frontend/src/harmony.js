@@ -26,11 +26,11 @@ export const configs = {
 export async function getHarmony(config) {
   await (async() => {
     console.log("waiting for onewallet extension to be injected...");
-    while(!window.hasOwnProperty("onewallet")) {
+    while(!window.hasOwnProperty("onewallet") && !window.hasOwnProperty("harmony")) {
       await new Promise(resolve => setTimeout(resolve, 250));
     }
   })();
-  const harmony = await new HarmonyExtension(window.onewallet || {}, config);
+  const harmony = await new HarmonyExtension(window.onewallet || window.harmony || {}, config);
   harmony.setProvider(config.Chain_URL);
   harmony.setMessenger(new Messenger(harmony.provider, config.Chain_Type, config.Chain_ID));
   return harmony;

@@ -34,6 +34,7 @@ yo scaffold-harmony
   - [x] Simple UI with Home Page
   - Connection to as many popular wallets as possible
     - [x] OneWallet
+    - [x] Mathwallet
   - [x] Simple interaction with demo contract
   - [x] Tests for UI/UX application
 - Smart contract:

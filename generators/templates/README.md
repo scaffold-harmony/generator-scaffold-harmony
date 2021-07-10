@@ -15,7 +15,7 @@ You can change the following environment variables within `.env` file:
 - `MAINNET_PRIVATE_KEY`: mainnet deployer private key
 - `ONEWALLET_ADDRESS`: address of your Harmony One Wallet Chrome extension
 
-## Commands
+## Localnet Commands
 
 ### Start Harmony Localnet
 
@@ -34,6 +34,8 @@ npm run localnet:stop
 ```shell
 npm run localnet:hmy -- balances one1ax072u4nllu5z2f965dasqluwassy5kvjc36zr
 ```
+
+## Contract Deployment Commands
 
 ### Localnet Deployment & Watch Changes for Re-deployment
 
@@ -63,4 +65,24 @@ or to force re-deploy
 
 ```shell
 npm run reset:mainnet
+```
+
+## Frontend Commands
+
+### Start Localnet Frontend
+
+```shell
+npm run frontend:localnet
+```
+
+### Start Testnet Frontend
+
+```shell
+npm run frontend:testnet
+```
+
+### Start Mainnet Frontend
+
+```shell
+npm run frontend:mainnet
 ```
