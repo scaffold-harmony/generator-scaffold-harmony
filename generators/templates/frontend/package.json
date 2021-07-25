@@ -4,18 +4,22 @@
   "private": true,
   "dependencies": {
     "@harmony-js/core": "^0.1.57",
+    "@metamask/detect-provider": "^1.2.0",
+    "antd": "^4.16.8",
+    "bn.js": "^5.2.0",
     "react": "16.11.0",
     "react-dom": "16.11.0",
-    "react-scripts": "4.0.0"
+    "react-scripts": "4.0.0",
+    "web3": "^1.4.0"
   },
   "scripts": {
-    "start": "react-scripts start",
-    "start:testnet": "REACT_APP_HARMONY_NETWORK=testnet react-scripts start",
-    "start:mainnet": "REACT_APP_HARMONY_NETWORK=mainnet react-scripts start",
-    "build": "react-scripts build",
-    "build:testnet": "REACT_APP_HARMONY_NETWORK=testnet react-scripts build",
-    "build:mainnet": "REACT_APP_HARMONY_NETWORK=mainnet react-scripts build",
-    "test": "react-scripts test"
+    "start": "npx react-scripts start",
+    "start:testnet": "REACT_APP_HARMONY_NETWORK=testnet npx react-scripts start",
+    "start:mainnet": "REACT_APP_HARMONY_NETWORK=mainnet npx react-scripts start",
+    "build": "npx react-scripts build",
+    "build:testnet": "REACT_APP_HARMONY_NETWORK=testnet npx react-scripts build",
+    "build:mainnet": "REACT_APP_HARMONY_NETWORK=mainnet npx react-scripts build",
+    "test": "npx react-scripts test"
   },
   "browserslist": {
     "production": [

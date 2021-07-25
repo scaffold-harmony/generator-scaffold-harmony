@@ -13,17 +13,18 @@
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "gulp",
     "localnet:build": "docker build -t harmonyone/localnet-ganache https://github.com/harmony-one/harmony-one-ganache-support.git\\#main:docker",
-    "localnet:start": "docker run --name harmony-localnet-ganache --rm -d -p 9500:9500 -p 9800:9800 -p 9801:9801 -p 9501:9501 harmonyone/localnet-ganache && ./scripts/wait-for-localnet.sh && ./scripts/fund-onewallet.js",
+    "localnet:start": "docker run --name harmony-localnet-ganache --rm -d -p 9500:9500 -p 9800:9800 -p 9801:9801 -p 9501:9501 harmonyone/localnet-ganache && ./scripts/wait-for-localnet.sh",
     "localnet:stop": "docker rm -f harmony-localnet-ganache",
     "localnet:status": "docker ps --filter name=harmony-localnet-ganache",
     "localnet:logs": "docker logs -f harmony-localnet-ganache",
     "localnet:hmy": "docker exec -it harmony-localnet-ganache hmy",
-    "deploy:localnet": "truffle migrate --network=localnet",
-    "reset:localnet": "truffle migrate --reset --network=localnet",
-    "deploy:testnet": "truffle migrate --network=testnet",
-    "reset:testnet": "truffle migrate --reset --network=testnet",
-    "deploy:mainnet": "truffle migrate --network=mainnet",
-    "reset:mainnet": "truffle migrate --reset --network=mainnet",
+    "localnet:faucet": "./scripts/fund-onewallet.js fund",
+    "deploy:localnet": "npx truffle migrate --network=localnet",
+    "reset:localnet": "npx truffle migrate --reset --network=localnet",
+    "deploy:testnet": "npx truffle migrate --network=testnet",
+    "reset:testnet": "npx truffle migrate --reset --network=testnet",
+    "deploy:mainnet": "npx truffle migrate --network=mainnet",
+    "reset:mainnet": "npx truffle migrate --reset --network=mainnet",
     "frontend:localnet": "(cd frontend && npm run start)",
     "frontend:build:localnet": "(cd frontend && npm run build)",
     "frontend:testnet": "(cd frontend && npm run start:testnet)",
@@ -56,6 +57,10 @@
     "gulp-shell": "^0.8.0",
     "require-dir": "^1.2.0",
     "solc": "^0.7.6",
-    "truffle": "^5.4.0"
+    "truffle": "^5.4.0",
+    "yargs": "^17.0.1"
+  },
+  "engines": {
+    "node": ">= 12.0.0"
   }
 }

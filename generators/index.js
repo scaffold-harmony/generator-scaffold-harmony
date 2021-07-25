@@ -31,11 +31,6 @@ module.exports = class extends Generator {
       },
       {
         type: "input",
-        name: "onewalletAddress",
-        message: "Your ONE Wallet Chrome extension address"
-      },
-      {
-        type: "input",
         name: "testnetPrivateKey",
         message: "Your hexadecimal private key for testnet deployment",
         default: ""

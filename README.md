@@ -8,7 +8,7 @@ Please note that this generator only works under POSIX compatible environments.
 
 ## Prepare Your Dev Environment
 
-- Install Node.js(>=15) & npm(>=7): https://nodejs.org/en/download/
+- Install Node.js(>=12) & npm(>=7): https://nodejs.org/en/download/
 - Install Docker Engine & CLI Client: https://docs.docker.com/engine/
 - Install Harmony One Wallet Chrome extension: https://chrome.google.com/webstore/detail/harmony-one-wallet/fnnegphlobjdpkhecapkijjdkgcjhkib
 

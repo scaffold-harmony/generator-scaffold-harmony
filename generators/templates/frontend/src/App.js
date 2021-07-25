@@ -5,6 +5,7 @@ import SimpleStorageContract from "./contracts/SimpleStorage.json";
 
 import "./App.css";
 import logo from "./logo.png";
+import { Space, Button, Input, Statistic, Card, Row, Col, Divider } from "antd";
 
 class App extends Component {
   state = {
@@ -56,22 +57,26 @@ class App extends Component {
   }
 
   setStorage = async (value) => {
-    const {account, contract} = this.state;
+    try {
+      const {account, contract} = this.state;
 
-    // Stores a given value, 5 by default.
-    await contract.methods.set(parseInt(value)).send({
-      from: account,
-      gasLimit: '1000001',
-      gasPrice: new Unit('10').asGwei().toWei(),
-    });
+      // Stores a given value, 5 by default.
+      await contract.methods.set(parseInt(value)).send({
+        from: account,
+        gasLimit: '1000001',
+        gasPrice: new Unit('10').asGwei().toWei(),
+      });
 
-    // Get the value from the contract to prove it worked.
-    const response = await contract.methods.get().call();
+      // Get the value from the contract to prove it worked.
+      const response = await contract.methods.get().call();
 
-    // Update state with the result.
-    this.setState({
-      storageValue: response.toString()
-    });
+      // Update state with the result.
+      this.setState({
+        storageValue: response.toString()
+      });
+    } catch (e) {
+      alert(e);
+    }
   };
 
   handleInputChange = (e) => {
@@ -101,17 +106,65 @@ class App extends Component {
           <div className="flex-item"><img alt="logo" className="logo" src={logo} /></div>
           <h1 className="flex-item">Good to Go!</h1>
           <div className="flex-item">Your Scaffold Harmony is installed and ready.</div>
-          <div className="flex-item">Network: {this.state.network}</div>
-          <div className="flex-item">RPC: {this.state.config.Chain_URL}</div>
-          <h2 className="flex-item">Smart Contract Example</h2>
-          <div className="flex-item">Your current account: {this.state.account.address}</div>
-          <div className="flex-item">The contract address is: {this.state.contract.address}</div>
-          <div className="flex-item">The stored value is: {this.state.storageValue}</div>
-          <div className="flex-item">
-            <span>Set storage: </span>
-            <input type="number" value={this.state.inputValue} onChange={this.handleInputChange} disabled={this.state.formDisabled} />
-            <input type="button" onClick={this.handleSubmit} disabled={this.state.formDisabled} value={this.state.formDisabled ? 'Waiting for transaction to be confirmed...' : 'Submit'} />
-          </div>
+
+          <Row gutter={16}>
+            <Col span={24} style={{marginTop: 16}}>
+              <Divider orientation="left">Connected Account</Divider>
+            </Col>
+            <Col span={12}>
+              <Card>
+                <Statistic
+                  title="Network"
+                  value={this.state.network}
+                />
+              </Card>
+            </Col>
+            <Col span={12}>
+              <Card>
+                <Statistic
+                  title="RPC"
+                  value={this.state.config.Chain_URL}
+                />
+              </Card>
+            </Col>
+            <Col span={24} style={{marginTop: 16}}>
+              <Card>
+                <Statistic
+                  title="Account Address"
+                  value={this.state.account.address}
+                />
+              </Card>
+            </Col>
+            <Col span={24} style={{marginTop: 16}}>
+              <Divider orientation="left">SimpleStorage Contract</Divider>
+            </Col>
+            <Col span={24}>
+              <Card>
+                <Statistic
+                  title="Contract Address"
+                  value={this.state.contract.address}
+                />
+              </Card>
+            </Col>
+            <Col span={12} style={{marginTop: 16}}>
+              <Card>
+                <Statistic
+                  title="Stored Value"
+                  value={this.state.storageValue}
+                />
+              </Card>
+            </Col>
+            <Col span={12} style={{marginTop: 16}}>
+              <Card>
+                <Statistic title="Set Storage" formatter={() => <span/>} prefix={<Space>
+                  <Input type="number" value={this.state.inputValue} onChange={this.handleInputChange} disabled={this.state.formDisabled} />
+                  <Button onClick={this.handleSubmit} disabled={this.state.formDisabled}>
+                    {this.state.formDisabled ? 'Waiting for transaction to be confirmed...' : 'Submit'}
+                  </Button>
+                </Space>} />
+              </Card>
+            </Col>
+          </Row>
         </div>
       </div>
     );

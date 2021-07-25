@@ -1,6 +1,6 @@
 {
   "name": "generator-scaffold-harmony",
-  "version": "1.1.1",
+  "version": "1.2.0",
   "description": "yeoman generator for Harmony smart contract projects",
   "homepage": "https://github.com/scaffold-harmony/generator-scaffold-harmony",
   "author": {
@@ -21,7 +21,7 @@
     "yeoman-assert": "^3.1.1"
   },
   "engines": {
-    "npm": ">= 4.0.0"
+    "node": ">= 12.0.0"
   },
   "dependencies": {
     "chalk": "^2.1.0",

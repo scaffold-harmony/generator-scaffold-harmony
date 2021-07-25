@@ -1,5 +1,5 @@
 import {HarmonyExtension} from "@harmony-js/core";
-import {ChainID, ChainType, defaultConfig} from "@harmony-js/utils";
+import {ChainID, ChainType} from "@harmony-js/utils";
 import {Messenger} from "@harmony-js/network";
 
 export const configs = {
