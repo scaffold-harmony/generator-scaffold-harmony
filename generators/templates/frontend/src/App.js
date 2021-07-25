@@ -5,7 +5,7 @@ import SimpleStorageContract from "./contracts/SimpleStorage.json";
 
 import "./App.css";
 import logo from "./logo.png";
-import { Space, Button, Input, Statistic, Card, Row, Col, Divider } from "antd";
+import { Space, Button, Input, Statistic, Card, Row, Col, Divider, Spin } from "antd";
 
 class App extends Component {
   state = {
@@ -15,7 +15,9 @@ class App extends Component {
     config: {},
     harmony: null,
     account: {},
-    contract: null
+    contract: null,
+    formDisabled: true,
+    submitting: false,
   };
 
   componentDidMount = async () => {
@@ -37,8 +39,9 @@ class App extends Component {
         network,
         config,
         harmony,
-        account: account,
-        contract: instance
+        account,
+        contract: instance,
+        formDisabled: false,
       }, this.init);
     } catch (error) {
       // Catch any errors for any of the above operations.
@@ -87,12 +90,30 @@ class App extends Component {
 
   handleSubmit = async (e) => {
     this.setState({
-      formDisabled: true
+      formDisabled: true,
+      submitting: true,
     });
     await this.setStorage(this.state.inputValue)
     this.setState({
       formDisabled: false,
-      inputValue: ''
+      inputValue: '',
+      submitting: false,
+    });
+  }
+
+  logout = async (e) => {
+    await this.state.harmony.logout();
+    this.setState({
+      account: {},
+      formDisabled: true,
+    });
+  }
+
+  login = async (e) => {
+    const account = await this.state.harmony.login();
+    this.setState({
+      account,
+      formDisabled: false,
     });
   }
 
@@ -129,10 +150,22 @@ class App extends Component {
             </Col>
             <Col span={24} style={{marginTop: 16}}>
               <Card>
-                <Statistic
-                  title="Account Address"
-                  value={this.state.account.address}
-                />
+                {
+                  this.state.account.address ?
+                    <Statistic
+                      title="Account Address"
+                      value={this.state.account.address}
+                      suffix={this.state.harmony ? <Button onClick={this.logout}>Logout</Button> : null}
+                    /> :
+                    (
+                      <span>
+                        <Statistic
+                          title="Account Address"
+                          formatter={() => (<Button onClick={this.login}>Login</Button>)}
+                        />
+                      </span>
+                    )
+                }
               </Card>
             </Col>
             <Col span={24} style={{marginTop: 16}}>
@@ -159,8 +192,9 @@ class App extends Component {
                 <Statistic title="Set Storage" formatter={() => <span/>} prefix={<Space>
                   <Input type="number" value={this.state.inputValue} onChange={this.handleInputChange} disabled={this.state.formDisabled} />
                   <Button onClick={this.handleSubmit} disabled={this.state.formDisabled}>
-                    {this.state.formDisabled ? 'Waiting for transaction to be confirmed...' : 'Submit'}
+                    Submit
                   </Button>
+                  {this.state.submitting ? <Spin /> : null}
                 </Space>} />
               </Card>
             </Col>
